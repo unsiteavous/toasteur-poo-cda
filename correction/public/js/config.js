@@ -1,0 +1,24 @@
+export var ToastPosition;
+(function (ToastPosition) {
+    ToastPosition[ToastPosition["TopLeft"] = 0] = "TopLeft";
+    ToastPosition[ToastPosition["TopRight"] = 1] = "TopRight";
+    ToastPosition[ToastPosition["BottomLeft"] = 2] = "BottomLeft";
+    ToastPosition[ToastPosition["BottomRight"] = 3] = "BottomRight";
+})(ToastPosition || (ToastPosition = {}));
+export const position = ToastPosition.BottomLeft;
+export const infoBackgroundColor = "#78dfff";
+export const errorBackgroundColor = "#ff9898";
+export const successBackgroundColor = "chartreuse";
+export const warningBackgroundColor = "#ffb300";
+export const infoColor = "#000000";
+export const errorColor = "#000000";
+export const successColor = "#000000";
+export const warningColor = "#000000";
+export const infoTitle = "Info";
+export const errorTitle = "Erreur !";
+export const successTitle = "Succès !";
+export const warningTitle = "Attention !";
+export const fontFamily = "Arial, Helvetica, sans-serif";
+export const displayDuration = 7000;
+export const showProgressBar = true;
+export const modulePath = import.meta.url.split('/').slice(0, -2).join('/');

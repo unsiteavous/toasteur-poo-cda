@@ -1,0 +1,151 @@
+body {
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+}
+
+.zoneDeToasts {
+  display: flex;
+}
+
+.top-left {
+  position: fixed;
+  flex-direction: column;
+  top: 0;
+  left: 0;
+}
+
+.top-right {
+  position: fixed;
+  flex-direction: column;
+  top: 0;
+  right: 0;
+}
+
+.bottom-left {
+  position: fixed;
+  flex-direction: column-reverse;
+  bottom: 0;
+  left: 0;
+  padding-bottom: 15px;
+}
+
+.bottom-right {
+  position: fixed;
+  flex-direction: column-reverse;
+  bottom: 0;
+  right: 0;
+  padding-bottom: 15px;
+}
+
+.toast {
+  width: 350px;
+  height: 85px;
+  margin: 15px;
+  margin-bottom: 0;
+  padding: 10px 20px;
+  border-radius: 10px;
+  box-shadow: 5px 5px 7px gray;
+  display: flex;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+  z-index: 9999;
+}
+
+.toast h4,
+.toast p {
+  margin: 4px 0 4px 15px;
+}
+
+.toast div {
+  z-index: 10;
+}
+
+.successIcone::before {
+  content: "";
+  background-image: url("../img/success.svg");
+  width: 30px;
+  height: 30px;
+  display: block;
+  background-size: contain;
+  position: relative;
+  z-index: 10;
+}
+
+.errorIcone::before {
+  content: "";
+  background-image: url("../img/error.svg");
+  width: 30px;
+  height: 30px;
+  display: block;
+  background-size: contain;
+}
+
+.infoIcone::before {
+  content: "";
+  background-image: url("../img/info.svg");
+  width: 30px;
+  height: 30px;
+  display: block;
+  background-size: contain;
+}
+
+.warningIcone::before {
+  content: "";
+  background-image: url("../img/warning.png");
+  width: 30px;
+  height: 30px;
+  display: block;
+  background-size: contain;
+}
+
+.close {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  z-index: 10;
+}
+
+.close::before {
+  content: '';
+  background-image: url("../img/cross.svg");
+  width: 15px;
+  height: 15px;
+  display: block;
+  background-size: contain;
+}
+
+.close:hover {
+  cursor: pointer;
+}
+
+.successEffect {
+  width: 200px;
+  height: 25px;
+  transform: rotate(-45deg);
+  position: absolute;
+  left: -200px;
+  z-index: 0;
+  opacity: 0;
+  animation: successEffect 2s 1s ease-in-out forwards;
+}
+
+@keyframes successEffect {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 1;
+    left: 400px;
+  }
+}
+
+.progressBar {
+  position: absolute;
+  width: 0%;
+  height: 7px;
+  bottom: 0;
+  left: 0;
+  border-radius: 0px 10px 10px 0px;
+}

@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Démonstration de Toasteur</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .demo-panel {
+            background-color: #f5f5f5;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+        
+        button {
+            background-color: #4CAF50;
+            border: none;
+            color: white;
+            padding: 10px 15px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 5px;
+            cursor: pointer;
+            border-radius: 4px;
+        }
+        
+        button.error { background-color: #F44336; }
+        button.info { background-color: #2196F3; }
+        button.warning { background-color: #FF9800; }
+        
+        select {
+            padding: 8px;
+            margin: 5px;
+            border-radius: 4px;
+            border: 1px solid #ddd;
+        }
+        
+        h2 {
+            margin-top: 0;
+        }
+    </style>
+</head>
+<body>
+    <h1>Démonstration de la librairie Toasteur</h1>
+    
+    <div class="demo-panel">
+        <h2>Types de Toasts</h2>
+        <button onclick="toasteur.success('Opération réussie avec succès!')">Toast Succès</button>
+        <button class="error" onclick="toasteur.error('Une erreur est survenue!')">Toast Erreur</button>
+        <button class="info" onclick="toasteur.info('Voici une information importante.')">Toast Info</button>
+        <button class="warning" onclick="toasteur.warning('Attention à cette action!')">Toast Avertissement</button>
+    </div>
+    
+    <div class="demo-panel">
+        <h2>Position des Toasts</h2>
+        <select id="position" onchange="changePosition()">
+            <option value="top-right">En haut à droite</option>
+            <option value="top-left">En haut à gauche</option>
+            <option value="bottom-right">En bas à droite</option>
+            <option value="bottom-left">En bas à gauche</option>
+        </select>
+        <button class="info" onclick="testPosition()">Tester la position</button>
+    </div>
+    
+    <div class="demo-panel">
+        <h2>Configuration</h2>
+        <div>
+            <label for="duration">Durée d'affichage (ms):</label>
+            <input type="number" id="duration" value="3000" min="500" step="500" />
+            <button onclick="changeDuration()">Appliquer</button>
+        </div>
+        
+        <div style="margin-top: 10px;">
+            <button onclick="showMultipleToasts()">Afficher plusieurs toasts (test de file d'attente)</button>
+        </div>
+    </div>
+    
+    <script type="module">
+        // Import de la librairie Toasteur
+        import toasteur from './js/index.js';
+        
+        // Les fonctions sont exposées globalement via toasteur
+        window.changePosition = function() {
+            const position = document.getElementById('position').value;
+            toasteur.setPosition(position);
+            toasteur.info(`Position changée à ${position}`);
+        };
+        
+        window.testPosition = function() {
+            const position = document.getElementById('position').value;
+            toasteur.info(`Test d'affichage à la position: ${position}`);
+        };
+        
+        window.changeDuration = function() {
+            const duration = parseInt(document.getElementById('duration').value);
+            toasteur.config.setDefaultDuration(duration);
+            toasteur.success(`Durée changée à ${duration}ms`);
+        };
+        
+        window.showMultipleToasts = function() {
+            // Afficher 6 toasts pour tester la file d'attente (maximum 4 visibles à la fois)
+            toasteur.info('Toast Info #1');
+            toasteur.success('Toast Success #2');
+            toasteur.warning('Toast Warning #3');
+            toasteur.error('Toast Error #4');
+            toasteur.info('Toast Info #5 (en file d\'attente)');
+            toasteur.success('Toast Success #6 (en file d\'attente)');
+        };
+    </script>
+    
+    <!-- Chargement du bundle compilé -->
+    <script type="module" src="./js/index.js"></script>
+</body>
+</html>
