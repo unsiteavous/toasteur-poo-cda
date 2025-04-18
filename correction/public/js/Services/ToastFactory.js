@@ -4,17 +4,28 @@ import { InfoToast } from "../Models/InfoToast.js";
 import { WarningToast } from "../Models/WarningToast.js";
 export class ToastFactory {
     createToast(type, message, duration) {
+        let toast;
         switch (type.toLowerCase()) {
             case 'success':
-                return new SuccessToast(message, duration);
+                toast = new SuccessToast(message, duration);
+                toast.setPriority(2);
+                return toast;
             case 'error':
-                return new ErrorToast(message, duration);
+                toast = new ErrorToast(message, duration);
+                toast.setPriority(1);
+                return toast;
             case 'info':
-                return new InfoToast(message, duration);
+                toast = new InfoToast(message, duration);
+                toast.setPriority(3);
+                return toast;
             case 'warning':
-                return new WarningToast(message, duration);
+                toast = new WarningToast(message, duration);
+                toast.setPriority(2);
+                return toast;
             default:
-                return new InfoToast(message, duration);
+                toast = new InfoToast(message, duration);
+                toast.setPriority(3);
+                return toast;
         }
     }
 }

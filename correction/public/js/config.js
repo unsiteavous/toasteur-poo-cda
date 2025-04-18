@@ -1,24 +1,18 @@
-export var ToastPosition;
-(function (ToastPosition) {
-    ToastPosition[ToastPosition["TopLeft"] = 0] = "TopLeft";
-    ToastPosition[ToastPosition["TopRight"] = 1] = "TopRight";
-    ToastPosition[ToastPosition["BottomLeft"] = 2] = "BottomLeft";
-    ToastPosition[ToastPosition["BottomRight"] = 3] = "BottomRight";
-})(ToastPosition || (ToastPosition = {}));
-export const position = ToastPosition.BottomLeft;
-export const infoBackgroundColor = "#78dfff";
-export const errorBackgroundColor = "#ff9898";
-export const successBackgroundColor = "chartreuse";
-export const warningBackgroundColor = "#ffb300";
-export const infoColor = "#000000";
-export const errorColor = "#000000";
-export const successColor = "#000000";
-export const warningColor = "#000000";
+export var defaultPosition;
+(function (defaultPosition) {
+    defaultPosition[defaultPosition["TopLeft"] = 0] = "TopLeft";
+    defaultPosition[defaultPosition["TopRight"] = 1] = "TopRight";
+    defaultPosition[defaultPosition["BottomLeft"] = 2] = "BottomLeft";
+    defaultPosition[defaultPosition["BottomRight"] = 3] = "BottomRight";
+})(defaultPosition || (defaultPosition = {}));
+export const position = defaultPosition.BottomLeft;
+export const infoColor = "#4caf50";
+export const errorColor = "#f44336";
+export const successColor = "#2196f3";
+export const warningColor = "#ff9800";
 export const infoTitle = "Info";
 export const errorTitle = "Erreur !";
 export const successTitle = "Succès !";
 export const warningTitle = "Attention !";
-export const fontFamily = "Arial, Helvetica, sans-serif";
-export const displayDuration = 7000;
-export const showProgressBar = true;
-export const modulePath = import.meta.url.split('/').slice(0, -2).join('/');
+export const defaultDuration = 7000;
+export const maxVisibleToasts = 4;

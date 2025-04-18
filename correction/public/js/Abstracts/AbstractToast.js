@@ -6,6 +6,7 @@ export class AbstractToast {
     message;
     duration;
     element = null;
+    priority;
     constructor(message, duration) {
         this.id = this.generateId();
         this.message = message;
@@ -64,12 +65,23 @@ export class AbstractToast {
     render() {
         const container = ToastManager.getInstance().getContainer();
         if (container && this.element) {
-            container.appendChild(this.element);
+            if (this.priority < 2) {
+                container.insertBefore(this.element, container.firstChild);
+            }
+            else {
+                container.appendChild(this.element);
+            }
             void this.element.offsetWidth;
             this.element.classList.add('toast-visible');
         }
     }
     generateId() {
         return 'toast-' + Math.random().toString(36).substr(2, 9);
+    }
+    getPriority() {
+        return this.priority;
+    }
+    setPriority(priority) {
+        this.priority = priority;
     }
 }

@@ -1,12 +1,13 @@
 import { ToastConfig } from "../config/ToastConfig.js";
 import { ToastObserver } from "./ToastObserver.js";
-import { PositionStrategyFactory } from "./PositionStrategyFactory.js";
+import { PositionStrategyFactory } from "./PositionStrategy.js";
 export class ToastManager {
     static instance;
     container = null;
     queue = [];
     activeToasts = [];
     positionStrategy;
+    priority = 2;
     constructor() {
         const config = ToastConfig.getInstance();
         const strategyFactory = new PositionStrategyFactory();
@@ -26,7 +27,12 @@ export class ToastManager {
     show(toast) {
         const config = ToastConfig.getInstance();
         if (this.activeToasts.length < config.getMaxVisibleToasts()) {
-            this.activeToasts.push(toast);
+            if (toast.getPriority() < 2) {
+                this.activeToasts.unshift(toast);
+            }
+            else {
+                this.activeToasts.push(toast);
+            }
             toast.show();
         }
         else {

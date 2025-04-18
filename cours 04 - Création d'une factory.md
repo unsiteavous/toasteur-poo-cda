@@ -14,6 +14,8 @@ Implémenter le patron Factory pour encapsuler la logique de création des diff�
    - L'ajout de nouveaux types de toast ne nécessite qu'une modification à un seul endroit
    - Le code est plus modulaire et facile à maintenir
 
+Pour bien comprendre l'intérêt de la factory, ajoutez une nouvelle propriété à votre AbstractToast, `priority`. C'est nous qui allons définir dans la Factory la priorité de chaque type de toast, sans que l'utilisateur ait quoi que ce soit à faire. La factory est là pour commander le bon objet à partir de ce que veut le client, sans que le client ait besoin de tout savoir sur l'objet final.
+
 ### Intérêt pédagogique
 - Comprendre le patron Factory Method et son utilité pour encapsuler la création d'objets
 - Voir comment il permet de respecter le principe "ouvert/fermé" (ouvert à l'extension, fermé à la modification)

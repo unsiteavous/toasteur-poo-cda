@@ -54,3 +54,20 @@ export class BottomLeftStrategy implements PositionStrategy {
       return 'toast-container-bottom-left';
   }
 }
+
+export class PositionStrategyFactory {
+  public createStrategy(position: string): PositionStrategy {
+      switch (position.toLowerCase()) {
+          case 'top-right':
+              return new TopRightStrategy();
+          case 'top-left':
+              return new TopLeftStrategy();
+          case 'bottom-right':
+              return new BottomRightStrategy();
+          case 'bottom-left':
+              return new BottomLeftStrategy();
+          default:
+              return new TopRightStrategy(); // Stratégie par défaut
+      }
+  }
+}

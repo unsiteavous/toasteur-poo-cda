@@ -9,6 +9,7 @@ Créer un gestionnaire central qui s'occupe de l'affichage des toasts et de la g
    - Ajouter des propriétés pour la file d'attente et les toasts actifs
    - Implémenter la méthode `show()` qui gère l'affichage ou la mise en file d'attente
    - Créer et gérer le conteneur DOM pour les toasts
+   - Si la priorité du toast est inférieure à 2, on doit mettre ce toast en premier dans le tableau de gestion des toasts, et dans le HTML.
 
 2. **Implémentation de Chain of Responsibility**:
    - Quand un toast est supprimé, vérifier s'il y a des toasts en attente
