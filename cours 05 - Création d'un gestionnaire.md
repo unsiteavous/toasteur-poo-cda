@@ -3,6 +3,8 @@
 ### Objectif pédagogique
 Créer un gestionnaire central qui s'occupe de l'affichage des toasts et de la gestion de la file d'attente. Cela permet d'illustrer le patron Singleton et Chain of Responsibility.
 
+On part du principe qu'il ne peut y avoir que 4 toasts affichés simultanément à l'écran. S'il y a plus de toasts à afficher, on doit les mettre en attente, et lorsqu'un toast en cours d'affichage s'en va (est supprimé), on peut alors en ajouter un nouveau.
+
 ### Étapes détaillées
 1. **Créer le fichier `src/manager/ToastManager.ts`**:
    - Implémenter la classe `ToastManager` en utilisant le patron Singleton
